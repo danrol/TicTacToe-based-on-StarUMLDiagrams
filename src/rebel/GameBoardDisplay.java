@@ -22,11 +22,19 @@ public class GameBoardDisplay {
   // ----------- << method.annotations@AAAAAAFqBrtQsRKf/Ic= >>
   // ----------- >>
   public void presentBoard(BoardData board, int n) {
+	  String spacesToAdd;
 	  State cellsState[][] = board.getCellsState();
-	  for(int i = 0; i < n;i++) {
+	  State stateToPrint;
+	  System.out.println("Tic Tac Toe Board");
+	  	  for(int i = 0; i < n;i++) {
 		  System.out.println();
 		  for(int j=0;j < n;j++) {
-			  System.out.print(cellsState[i][j] + " ");
+			  stateToPrint = cellsState[i][j];
+			  if(stateToPrint == State.Blank)
+				  spacesToAdd = " ";
+			  else
+				  spacesToAdd = "     ";
+			  System.out.print(stateToPrint + spacesToAdd);
 		  }
 	  }
   System.out.println("");

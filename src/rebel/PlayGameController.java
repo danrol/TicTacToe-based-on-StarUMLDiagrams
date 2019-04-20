@@ -29,9 +29,7 @@ public class PlayGameController {
 		PlayerTwoMoveMessage msg2Move = new PlayerTwoMoveMessage();
 		PlayerOneMoveMessage msg1Move = new PlayerOneMoveMessage();
 		do {
-			System.out.println("entered before");
 			boardData.switchPlayer();
-			System.out.println("entered");
 			currentPlayerAccordingToBoard = boardData.getCurrentPlayer();
 			
 			if(currentPlayerAccordingToBoard == Constants.FIRST_PLAYER)
@@ -49,10 +47,12 @@ public class PlayGameController {
 			System.out.println("Choose your y position: ");
 			y = sc.nextInt();
 			
-			boardDisplay.presentBoard(boardData, boardData.getN());
 
 			if(boardData.isRubricAvailable(x, y))
 				move(x,y);
+			
+			boardDisplay.presentBoard(boardData, boardData.getN());
+
 			
 			System.out.println("Do you want to restart the game (0 = no, 1 = yes)?");
 			restartGame = sc.nextInt();

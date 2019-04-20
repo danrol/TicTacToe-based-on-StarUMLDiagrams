@@ -79,28 +79,28 @@ public class BoardData {
 		this.playerTurn = playerTurn;
 	}
 
-	//  public void set(Board ) {
-	//    this. = ;
-	//  }
-	//
-	//  public void link(Board _) {
-	//    if (_ != null) {
-	//      _.unlink();
-	//      _.set(this);
-	//    }
-	//
-	//    unlink();
-	//    set(_);
-	//  }
-	//
-	//
-	//
-	//  public void unlink() {
-	//    if (get() != null) {
-	//      get().set(null);
-	//      set(null);
-	//    }
-	//  }
+//	  public void set(Board ) {
+//	    this. = ;
+//	  }
+//	
+//	  public void link(Board _) {
+//	    if (_ != null) {
+//	      _.unlink();
+//	      _.set(this);
+//	    }
+//	
+//	    unlink();
+//	    set(_);
+//	  }
+//	
+//	
+//	
+//	  public void unlink() {
+//	    if (get() != null) {
+//	      get().set(null);
+//	      set(null);
+//	    }
+//	  }
 
 	// ----------- << method.annotations@AAAAAAFqByNRLhVau8Q= >>
 	// ----------- >>
@@ -189,7 +189,6 @@ public class BoardData {
 	// ----------- >>
 
 	public void switchPlayer() {
-		System.out.println("switchPl");
 		if(currentPlayer == Constants.FIRST_PLAYER)
 			currentPlayer = Constants.SECOND_PLAYER;
 		else if(currentPlayer == Constants.SECOND_PLAYER)
