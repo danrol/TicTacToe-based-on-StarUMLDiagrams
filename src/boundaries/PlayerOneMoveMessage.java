@@ -7,23 +7,12 @@
 */
 package boundaries;
 
-import java.util.*;
-import java.time.*;
-
-
-
-// ----------- << imports@AAAAAAFqByjnnxbrEbw= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFqByjnnxbrEbw= >>
-// ----------- >>
 public class PlayerOneMoveMessage {
-  // ----------- << method.annotations@AAAAAAFqBytJhBcpzRo= >>
-  // ----------- >>
+
+	
   public void playerOneMoveMessage() {
 	  System.out.printf("Player #1 should perform move");
 
   }
-// ----------- << class.extras@AAAAAAFqByjnnxbrEbw= >>
-// ----------- >>
+
 }

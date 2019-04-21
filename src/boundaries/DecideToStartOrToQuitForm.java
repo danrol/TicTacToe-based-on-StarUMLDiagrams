@@ -7,23 +7,18 @@
 */
 package boundaries;
 
-import java.util.*;
-import java.time.*;
+import java.util.Scanner;
 
+import rebel.Constants;
 
-
-// ----------- << imports@AAAAAAFp/W8vHEpDBDc= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFp/W8vHEpDBDc= >>
-// ----------- >>
 public class DecideToStartOrToQuitForm {
-  // ----------- << method.annotations@AAAAAAFp/XRHE0rj494= >>
-  // ----------- >>
-  public void choose(int decision) {
-  // ----------- << method.body@AAAAAAFp/XRHE0rj494= >>
-  // ----------- >>
+
+	
+  public int choose(Scanner sc) {
+	  int restartGame;
+		System.out.printf("Do you want to start or quit the game (%d = start, %d = quit)?\n", 
+				Constants.START_CODE, Constants.QUIT_CODE);
+		restartGame = sc.nextInt();
+		return restartGame;
   }
-// ----------- << class.extras@AAAAAAFp/W8vHEpDBDc= >>
-// ----------- >>
 }

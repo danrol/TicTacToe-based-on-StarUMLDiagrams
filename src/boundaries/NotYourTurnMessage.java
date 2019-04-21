@@ -7,16 +7,7 @@
 */
 package boundaries;
 
-import java.util.*;
-import java.time.*;
 
-
-
-// ----------- << imports@AAAAAAFqCAaaJlpubcE= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFqCAaaJlpubcE= >>
-// ----------- >>
 public class NotYourTurnMessage {
 
 public NotYourTurnMessage() {

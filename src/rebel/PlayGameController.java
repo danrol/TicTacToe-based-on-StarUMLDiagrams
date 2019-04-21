@@ -7,29 +7,36 @@
  */
 package rebel;
 
-import java.util.*;
+import java.util.Scanner;
 
-import boundaries.ChooseYourXPositionMessage;
-import boundaries.ChooseYourYPositionMessage;
+import boundaries.ChooseYourXPositionForm;
+import boundaries.ChooseYourYPositionForm;
+import boundaries.DecideToStartOrToQuitForm;
 import boundaries.GameBoardDisplay;
 import boundaries.IllegalMoveMessage;
 import boundaries.NotYourTurnMessage;
 import boundaries.PlayerCheckForm;
 import boundaries.PlayerOneMoveMessage;
 import boundaries.PlayerTwoMoveMessage;
+import boundaries.QuitMessage;
 import boundaries.RestartGameForm;
 import boundaries.ResultsMessage;
 
-import rebel.BoardData.State;
-import rebel.Constants;
+import rebel.Constants.*;
 
 
 public class PlayGameController {
 	private int currentPlayer = 2;
 	private BoardData boardData = new BoardData();
+	private Scanner sc = new Scanner(System.in);
 
 	public PlayGameController() {
-		playGame();
+		DecideToStartOrToQuitForm decideForm = new DecideToStartOrToQuitForm();
+		int decisionResult = decideForm.choose(sc);
+		if(decisionResult == Constants.START_CODE)
+			playGame();
+		else if(decisionResult == Constants.QUIT_CODE)
+			quitGame();
 	}
 
 	public void playGame() {
@@ -37,10 +44,11 @@ public class PlayGameController {
 		int restartGame;
 		boolean notYourTurn;
 		boolean legalMove;
+		Scanner sc = new Scanner(System.in);
 		PlayerCheckForm playerCheckForm = new PlayerCheckForm();
 		RestartGameForm restartForm= new RestartGameForm();
-		ChooseYourXPositionMessage chooseX = new ChooseYourXPositionMessage();
-		ChooseYourYPositionMessage chooseY = new ChooseYourYPositionMessage();
+		ChooseYourXPositionForm chooseX = new ChooseYourXPositionForm();
+		ChooseYourYPositionForm chooseY = new ChooseYourYPositionForm();
 		GameBoardDisplay boardDisplay = new GameBoardDisplay();
 		PlayerTwoMoveMessage msg2Move = new PlayerTwoMoveMessage();
 		PlayerOneMoveMessage msg1Move = new PlayerOneMoveMessage();
@@ -55,7 +63,7 @@ public class PlayGameController {
 				msg2Move.playerTwoMoveMesage();
 
 			do {
-				playerTryingToMove = playerCheckForm.check();
+				playerTryingToMove = playerCheckForm.check(sc);
 
 				if(playerTryingToMove != currentPlayerAccordingToBoard) {
 					new NotYourTurnMessage();
@@ -66,8 +74,8 @@ public class PlayGameController {
 			}while (notYourTurn == true);
 
 			do{
-				x = chooseX.choose(currentPlayerAccordingToBoard);
-				y = chooseY.choose(currentPlayerAccordingToBoard);
+				x = chooseX.choose(currentPlayerAccordingToBoard, sc);
+				y = chooseY.choose(currentPlayerAccordingToBoard, sc);
 
 
 				if(boardData.isRubricAvailable(x, y)) {
@@ -82,28 +90,26 @@ public class PlayGameController {
 			boardDisplay.presentBoard(boardData, boardData.getN());
 
 
-			restartGame = restartForm.restartcheck();
-			if(restartGame == 1)
+			restartGame = restartForm.restartcheck(sc);
+			if(restartGame == Constants.AGREE_TO_RESTART_CODE)
 				restartGame();
 		}
 		while (!boardData.checkDraw() && !boardData.checkWin(x,y));
 		results();
 	}
-	// ----------- << method.annotations@AAAAAAFqBulsxhSBMcE= >>
-	// ----------- >>
+
 	public void move(int x, int y) {
 		boardData.registerMove(x, y, State.values()[boardData.getCurrentPlayer()]);
 	}
-	// ----------- << method.annotations@AAAAAAFqB7omw0pLs34= >>
-	// ----------- >>
+
+	
 	public void results() {
-		ResultsMessage resMes;
 		if(boardData.checkDraw()) {
-			resMes = new ResultsMessage(0);
+			new ResultsMessage(0);
 		}
 		else {
 			int winner = boardData.getCurrentPlayer();
-			resMes = new ResultsMessage(winner);
+			new ResultsMessage(winner);
 		}
 	}
 
@@ -113,9 +119,13 @@ public class PlayGameController {
 		else if (currentPlayer == Constants.SECOND_PLAYER)
 			currentPlayer = Constants.FIRST_PLAYER;
 	}
+	
+	public void quitGame() {
+		sc.close();
+		new QuitMessage();
+		System.exit(0);
+	}
 	public void restartGame() {
 		boardData.cleanBoard();
 	}
-	// ----------- << class.extras@AAAAAAFp/VrNYETRfeE= >>
-	// ----------- >>
 }

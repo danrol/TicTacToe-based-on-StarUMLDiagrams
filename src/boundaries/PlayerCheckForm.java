@@ -1,14 +1,12 @@
 package boundaries;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class PlayerCheckForm {
-public int check() {
+public int check(Scanner sc) {
 	int player;
-	Scanner sc = new Scanner(System.in);
 	System.out.println("\nWhat player are you?");
 	player = sc.nextInt();
-	sc.close();
 	return player;
 }
 }

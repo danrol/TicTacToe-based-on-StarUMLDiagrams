@@ -7,8 +7,7 @@
  */
 package rebel;
 
-import java.util.*;
-import rebel.Constants;
+import rebel.Constants.*;
 
 
 
@@ -20,10 +19,8 @@ import rebel.Constants;
 
 public class BoardData {
 
-	public enum State{Blank, X, O};
+//	public enum State{Blank, X, O};
 	private int n = 3;
-	private final State player1State = State.X;
-	private final State player2State = State.O;
 	private State[][] cellsState;
 	private int moveCount = 0;
 	private int currentPlayer = Constants.SECOND_PLAYER;
@@ -32,9 +29,6 @@ public class BoardData {
 		return n;
 	}
 
-	public State getPlayer2State() {
-		return player2State;
-	}
 
 	public int getCurrentPlayer() {
 		return currentPlayer;

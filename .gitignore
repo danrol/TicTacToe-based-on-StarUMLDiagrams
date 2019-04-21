@@ -34,3 +34,4 @@ bin/rebel/GameBoardDisplay.class
 bin/rebel/DecideToStartOrToQuitForm.class
 bin/rebel/BoardData.class
 *.class
+*.class

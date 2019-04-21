@@ -7,24 +7,16 @@
 */
 package boundaries;
 
-import java.util.*;
-import java.time.*;
+import java.util.Scanner;
+import rebel.Constants;
 
-
-
-// ----------- << imports@AAAAAAFp/VFnHES6Lt0= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFp/VFnHES6Lt0= >>
-// ----------- >>
 public class RestartGameForm {
 
-public int restartcheck() {
+public int restartcheck(Scanner sc) {
 	int restartGame;
-	Scanner sc = new Scanner(System.in);
-	System.out.println("Do you want to restart the game (0 = no, 1 = yes)?");
+	System.out.printf("Do you want to restart the game (%d = no, %d = yes)?",
+			Constants.DONT_RESTART_CODE, Constants.AGREE_TO_RESTART_CODE);
 	restartGame = sc.nextInt();
-	sc.close();
 	return restartGame;
 }
 }

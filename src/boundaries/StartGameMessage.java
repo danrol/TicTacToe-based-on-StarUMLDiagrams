@@ -7,17 +7,8 @@
 */
 package boundaries;
 
-import java.util.*;
-import java.time.*;
 import rebel.Constants;
 
-
-
-// ----------- << imports@AAAAAAFp/Vnmw0TMAa0= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFp/Vnmw0TMAa0= >>
-// ----------- >>
 public class StartGameMessage {
 	public StartGameMessage() {
 		System.out.printf("Player #%d please start the game", Constants.PLAYER_TO_START);

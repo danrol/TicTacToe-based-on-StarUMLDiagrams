@@ -7,27 +7,16 @@
 */
 package boundaries;
 
-import java.util.*;
-import java.time.*;
-
 import rebel.BoardData;
-import rebel.BoardData.State;
+import rebel.Constants.*;
 
-
-
-// ----------- << imports@AAAAAAFp/XV7kkrpHNo= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFp/XV7kkrpHNo= >>
-// ----------- >>
 public class GameBoardDisplay {
-  // ----------- << method.annotations@AAAAAAFqBrtQsRKf/Ic= >>
-  // ----------- >>
+
   public void presentBoard(BoardData board, int n) {
 	  String spacesToAdd;
 	  State cellsState[][] = board.getCellsState();
 	  State stateToPrint;
-	  System.out.println("Tic Tac Toe Board");
+	  System.out.println("\nTic Tac Toe Board:");
 	  	  for(int i = 0; i < n;i++) {
 		  System.out.println();
 		  for(int j=0;j < n;j++) {
@@ -41,18 +30,12 @@ public class GameBoardDisplay {
 	  }
   System.out.println("");
   }
-  // ----------- << method.annotations@AAAAAAFqBtEJWBQISfs= >>
-  // ----------- >>
+
+  
   public void showMoveOnBoard() {
-  // ----------- << method.body@AAAAAAFqBtEJWBQISfs= >>
-  // ----------- >>
   }
-  // ----------- << method.annotations@AAAAAAFqBuXO1hRj0gs= >>
-  // ----------- >>
+
+  
   public void move() {
-  // ----------- << method.body@AAAAAAFqBuXO1hRj0gs= >>
-  // ----------- >>
   }
-// ----------- << class.extras@AAAAAAFp/XV7kkrpHNo= >>
-// ----------- >>
 }

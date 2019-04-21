@@ -7,16 +7,6 @@
 */
 package boundaries;
 
-import java.util.*;
-import java.time.*;
-
-
-
-// ----------- << imports@AAAAAAFp/XCICkpIRYw= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFp/XCICkpIRYw= >>
-// ----------- >>
 public class ResultsMessage {
 
 	public ResultsMessage(int winner) {
@@ -24,8 +14,5 @@ public class ResultsMessage {
 			System.out.println("You have a draw. Good luck next time");
 		else
 			System.out.printf("Player #%d wins. Congrats!", winner);
-		// TODO Auto-generated constructor stub
 	}
-// ----------- << class.extras@AAAAAAFp/XCICkpIRYw= >>
-// ----------- >>
 }
