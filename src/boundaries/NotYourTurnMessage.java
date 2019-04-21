@@ -5,21 +5,21 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
 */
-package rebel;
+package boundaries;
 
 import java.util.*;
 import java.time.*;
-import rebel.Constants;
 
 
 
-// ----------- << imports@AAAAAAFp/Vnmw0TMAa0= >>
+// ----------- << imports@AAAAAAFqCAaaJlpubcE= >>
 // ----------- >>
 
-// ----------- << class.annotations@AAAAAAFp/Vnmw0TMAa0= >>
+// ----------- << class.annotations@AAAAAAFqCAaaJlpubcE= >>
 // ----------- >>
-public class StartGameMessage {
-	public StartGameMessage() {
-		System.out.printf("Player #%d please start the game", Constants.PLAYER_TO_START);
-	}
+public class NotYourTurnMessage {
+
+public NotYourTurnMessage() {
+	System.out.println("Another Player should move");
+}
 }

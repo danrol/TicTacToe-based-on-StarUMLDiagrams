@@ -5,7 +5,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
 */
-package rebel;
+package boundaries;
 
 import java.util.*;
 import java.time.*;
@@ -17,7 +17,14 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAFp/VFnHES6Lt0= >>
 // ----------- >>
-public class RestartGameMessage {
-// ----------- << class.extras@AAAAAAFp/VFnHES6Lt0= >>
-// ----------- >>
+public class RestartGameForm {
+
+public int restartcheck() {
+	int restartGame;
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Do you want to restart the game (0 = no, 1 = yes)?");
+	restartGame = sc.nextInt();
+	sc.close();
+	return restartGame;
+}
 }

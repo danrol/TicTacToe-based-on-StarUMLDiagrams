@@ -5,10 +5,12 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
 */
-package rebel;
+package boundaries;
 
 import java.util.*;
 import java.time.*;
+
+import rebel.BoardData;
 import rebel.BoardData.State;
 
 

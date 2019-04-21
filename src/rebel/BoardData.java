@@ -171,8 +171,10 @@ public class BoardData {
 	// ----------- << method.annotations@AAAAAAFqBu0O2RT7kLA= >>
 	// ----------- >>
 	public void registerMove(int x, int y, State state) {
-		if(isRubricAvailable(x, y) == true)
+		if(isRubricAvailable(x, y) == true) {
 			cellsState[x][y] = state;
+			moveCount++;
+		}
 		else
 			//TODO
 			System.out.println("Rubrik already occupied please change your move");

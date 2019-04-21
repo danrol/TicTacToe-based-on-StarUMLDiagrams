@@ -5,7 +5,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
 */
-package rebel;
+package boundaries;
 
 
 
@@ -20,6 +20,6 @@ public class IllegalMoveMessage {
 
 
 public IllegalMoveMessage() {
-	System.out.println("Another Player should move");
+	System.out.println("Illegal move. This rubik is occupied. Try to choose another one");
 }
 }
