@@ -137,9 +137,9 @@ public class BoardData {
 	}
 
 	
-	public void registerMove(int x, int y, State state) {
-		if(isRubricAvailable(x, y) == true) {
-			cellsState[x][y] = state;
+	public void registerMove(int row, int col, State state) {
+		if(isRubricAvailable(row, col) == true) {
+			cellsState[row][col] = state;
 			moveCount++;
 		}
 		else

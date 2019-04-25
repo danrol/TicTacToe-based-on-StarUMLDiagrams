@@ -10,8 +10,8 @@ package application;
 import java.util.Scanner;
 
 import application.Constants.*;
-import boundaries.ChooseYourXPositionForm;
-import boundaries.ChooseYourYPositionForm;
+import boundaries.ChooseYourRowPositionForm;
+import boundaries.ChooseYourColumnPositionForm;
 import boundaries.DecideToStartOrToQuitForm;
 import boundaries.GameBoardDisplay;
 import boundaries.IllegalMoveMessage;
@@ -39,7 +39,7 @@ public class PlayGameController {
 	}
 
 	public void playGame() {
-		int x, y, currentPlayerAccordingToBoard, playerTryingToMove;
+		int row, col, currentPlayerAccordingToBoard, playerTryingToMove;
 		int restartGame;
 		boolean notYourTurn;
 		boolean legalMove;
@@ -47,8 +47,8 @@ public class PlayGameController {
 		IllegalMoveMessage illegalMessage = new IllegalMoveMessage();
 		PlayerCheckForm playerCheckForm = new PlayerCheckForm();
 		RestartGameForm restartForm= new RestartGameForm();
-		ChooseYourXPositionForm chooseX = new ChooseYourXPositionForm();
-		ChooseYourYPositionForm chooseY = new ChooseYourYPositionForm();
+		ChooseYourRowPositionForm chooseX = new ChooseYourRowPositionForm();
+		ChooseYourColumnPositionForm chooseY = new ChooseYourColumnPositionForm();
 		GameBoardDisplay boardDisplay = new GameBoardDisplay();
 		PlayerTwoMoveMessage msg2Move = new PlayerTwoMoveMessage();
 		PlayerOneMoveMessage msg1Move = new PlayerOneMoveMessage();
@@ -78,12 +78,12 @@ public class PlayGameController {
 			}while (notYourTurn == true);
 
 			do{
-				x = chooseX.choose(currentPlayerAccordingToBoard, sc);
-				y = chooseY.choose(currentPlayerAccordingToBoard, sc);
+				row = chooseX.choose(currentPlayerAccordingToBoard, sc);
+				col = chooseY.choose(currentPlayerAccordingToBoard, sc);
 
 
-				if(boardData.isRubricAvailable(x, y)) {
-					move(x,y);
+				if(boardData.isRubricAvailable(row, col)) {
+					move(row,col);
 					legalMove = true;
 				}
 				else {
@@ -100,7 +100,7 @@ public class PlayGameController {
 			if(restartGame == Constants.AGREE_TO_RESTART_CODE)
 				restartGame();
 		}
-		while (!boardData.checkDraw() && !boardData.checkWin(x,y));
+		while (!boardData.checkDraw() && !boardData.checkWin(row,col));
 		results();
 	}
 
