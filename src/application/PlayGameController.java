@@ -5,10 +5,11 @@
  *
  * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
  */
-package rebel;
+package application;
 
 import java.util.Scanner;
 
+import application.Constants.*;
 import boundaries.ChooseYourXPositionForm;
 import boundaries.ChooseYourYPositionForm;
 import boundaries.DecideToStartOrToQuitForm;
@@ -21,8 +22,6 @@ import boundaries.PlayerTwoMoveMessage;
 import boundaries.QuitMessage;
 import boundaries.RestartGameForm;
 import boundaries.ResultsMessage;
-
-import rebel.Constants.*;
 
 
 public class PlayGameController {
@@ -45,6 +44,7 @@ public class PlayGameController {
 		boolean notYourTurn;
 		boolean legalMove;
 		Scanner sc = new Scanner(System.in);
+		IllegalMoveMessage illegalMessage = new IllegalMoveMessage();
 		PlayerCheckForm playerCheckForm = new PlayerCheckForm();
 		RestartGameForm restartForm= new RestartGameForm();
 		ChooseYourXPositionForm chooseX = new ChooseYourXPositionForm();
@@ -55,6 +55,10 @@ public class PlayGameController {
 
 		do {
 			boardData.switchPlayer();
+			
+			if(boardData.isEmpty() && boardData.getCurrentPlayer() != Constants.PLAYER_TO_START)
+				boardData.switchPlayer();
+			
 			currentPlayerAccordingToBoard = boardData.getCurrentPlayer();
 
 			if(currentPlayerAccordingToBoard == Constants.FIRST_PLAYER)
@@ -83,14 +87,16 @@ public class PlayGameController {
 					legalMove = true;
 				}
 				else {
-					new IllegalMoveMessage();
+					illegalMessage.rubrikIsOccupied();
 					legalMove = false;
 				}
+				
+				
 			}while(legalMove == false);
 			boardDisplay.presentBoard(boardData, boardData.getN());
 
 
-			restartGame = restartForm.restartcheck(sc);
+			restartGame = restartForm.restartCheck(sc);
 			if(restartGame == Constants.AGREE_TO_RESTART_CODE)
 				restartGame();
 		}

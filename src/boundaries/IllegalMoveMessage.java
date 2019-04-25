@@ -7,19 +7,14 @@
 */
 package boundaries;
 
-
-
-
-
-// ----------- << imports@AAAAAAFqETfulh1TSbE= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFqETfulh1TSbE= >>
-// ----------- >>
 public class IllegalMoveMessage {
+	
+	public void rubrikIsOccupied() {
+		System.out.println("Illegal move. This rubik is occupied. Try to choose another one");
+	}
+	
+	public void moveOutOfBounds() {
+		System.out.println("Illegal move. Array out of bounds. Try to choose another one");
+	}
 
-
-public IllegalMoveMessage() {
-	System.out.println("Illegal move. This rubik is occupied. Try to choose another one");
-}
 }

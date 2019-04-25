@@ -1,4 +1,4 @@
-package rebel;
+package application;
 
 public class Constants {
 public static final int PLAYER_TO_START = 1;

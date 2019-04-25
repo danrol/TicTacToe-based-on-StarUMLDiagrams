@@ -9,7 +9,7 @@ package boundaries;
 
 import java.util.Scanner;
 
-import rebel.Constants;
+import application.Constants;
 
 public class DecideToStartOrToQuitForm {
 

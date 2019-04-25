@@ -7,8 +7,8 @@
 */
 package boundaries;
 
-import rebel.BoardData;
-import rebel.Constants.*;
+import application.BoardData;
+import application.Constants.*;
 
 public class GameBoardDisplay {
 
@@ -29,13 +29,5 @@ public class GameBoardDisplay {
 		  }
 	  }
   System.out.println("");
-  }
-
-  
-  public void showMoveOnBoard() {
-  }
-
-  
-  public void move() {
   }
 }

@@ -5,17 +5,10 @@
  *
  * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
  */
-package rebel;
+package application;
 
-import rebel.Constants.*;
+import application.Constants.*;
 
-
-
-// ----------- << imports@AAAAAAFp/VC+okS16eU= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAFp/VC+okS16eU= >>
-// ----------- >>
 
 public class BoardData {
 
@@ -60,52 +53,20 @@ public class BoardData {
 		return playerTurn;
 	}
 
-	//  public Board get() {
-	//    return ;
-	//  }
 
-
-	public void setCellsState(State[][] cellsState) {
-		this.cellsState = cellsState;
-	}
 
 	public void setPlayerTurn(int playerTurn) {
 		this.playerTurn = playerTurn;
 	}
 
-//	  public void set(Board ) {
-//	    this. = ;
-//	  }
-//	
-//	  public void link(Board _) {
-//	    if (_ != null) {
-//	      _.unlink();
-//	      _.set(this);
-//	    }
-//	
-//	    unlink();
-//	    set(_);
-//	  }
-//	
-//	
-//	
-//	  public void unlink() {
-//	    if (get() != null) {
-//	      get().set(null);
-//	      set(null);
-//	    }
-//	  }
-
-	// ----------- << method.annotations@AAAAAAFqByNRLhVau8Q= >>
-	// ----------- >>
 	public boolean isRubricAvailable(int x, int y) {
 		if(cellsState[x][y]==State.Blank)
 			return true;
 		else
 			return false;
 	}
-	// ----------- << method.annotations@AAAAAAFqByPyCBWKRRg= >>
-	// ----------- >>
+
+	
 	public boolean checkDraw() {
         if(moveCount == (Math.pow(n, 2) - 1))
             return true;
@@ -115,7 +76,19 @@ public class BoardData {
 		
 	}
 	
+	public boolean isEmpty() {
+		for(int i = 0;i < n;i++) {
+			for (int j = 0; j < n;j++){
+				if (cellsState[i][j] != State.Blank)
+					return false;
+			}
+		}
+		return true;
+	}
 	public boolean checkWin(int x, int y) {
+		if(isEmpty() == true)
+			return false;
+		
 		State cellToCheck = cellsState[x][y];
         for(int i = 0; i < n; i++){
             if(cellsState[x][i] != cellToCheck)
@@ -162,8 +135,8 @@ public class BoardData {
         }
         return false;
 	}
-	// ----------- << method.annotations@AAAAAAFqBu0O2RT7kLA= >>
-	// ----------- >>
+
+	
 	public void registerMove(int x, int y, State state) {
 		if(isRubricAvailable(x, y) == true) {
 			cellsState[x][y] = state;
@@ -181,8 +154,6 @@ public class BoardData {
 			}
 		}
 	}
-	// ----------- << class.extras@AAAAAAFp/VC+okS16eU= >>
-	// ----------- >>
 
 	public void switchPlayer() {
 		if(currentPlayer == Constants.FIRST_PLAYER)

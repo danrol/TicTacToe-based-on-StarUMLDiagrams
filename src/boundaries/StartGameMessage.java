@@ -7,7 +7,7 @@
 */
 package boundaries;
 
-import rebel.Constants;
+import application.Constants;
 
 public class StartGameMessage {
 	public StartGameMessage() {

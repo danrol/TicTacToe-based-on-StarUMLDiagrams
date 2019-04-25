@@ -35,3 +35,8 @@ bin/rebel/DecideToStartOrToQuitForm.class
 bin/rebel/BoardData.class
 *.class
 *.class
+*.class
+bin/rebel/BoardData.class
+bin/rebel/Constants.class
+bin/rebel/Main.class
+bin/rebel/PlayGameController.class

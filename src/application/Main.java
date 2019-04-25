@@ -1,4 +1,4 @@
-package rebel;
+package application;
 
 public class Main {
 
