@@ -23,7 +23,6 @@ import boundaries.QuitMessage;
 import boundaries.RestartGameForm;
 import boundaries.ResultsMessage;
 
-
 public class PlayGameController {
 	private int currentPlayer = 2;
 	private BoardData boardData = new BoardData();
@@ -32,9 +31,9 @@ public class PlayGameController {
 	public PlayGameController() {
 		DecideToStartOrToQuitForm decideForm = new DecideToStartOrToQuitForm();
 		int decisionResult = decideForm.choose(sc);
-		if(decisionResult == Constants.START_CODE)
+		if (decisionResult == Constants.START_CODE)
 			playGame();
-		else if(decisionResult == Constants.QUIT_CODE)
+		else if (decisionResult == Constants.QUIT_CODE)
 			quitGame();
 	}
 
@@ -43,94 +42,98 @@ public class PlayGameController {
 		int restartGame;
 		boolean notYourTurn;
 		boolean legalMove;
-		Scanner sc = new Scanner(System.in);
+		boolean newGame = true;
+		Scanner player_input_scanner = new Scanner(System.in);
 		IllegalMoveMessage illegalMessage = new IllegalMoveMessage();
 		PlayerCheckForm playerCheckForm = new PlayerCheckForm();
-		RestartGameForm restartForm= new RestartGameForm();
+		RestartGameForm restartForm = new RestartGameForm();
 		ChooseYourRowPositionForm chooseX = new ChooseYourRowPositionForm();
 		ChooseYourColumnPositionForm chooseY = new ChooseYourColumnPositionForm();
 		GameBoardDisplay boardDisplay = new GameBoardDisplay();
 		PlayerTwoMoveMessage msg2Move = new PlayerTwoMoveMessage();
 		PlayerOneMoveMessage msg1Move = new PlayerOneMoveMessage();
 
-		do {
+		do { // game not over - while
+			if(newGame == false)
+			{
+				restartGame = restartForm.restartCheck(player_input_scanner);
+				if (restartGame == Constants.AGREE_TO_RESTART_GAME)
+					restartGame();
+
+			}
 			boardData.switchPlayer();
-			
-			if(boardData.isEmpty() && boardData.getCurrentPlayer() != Constants.PLAYER_TO_START)
+
+			if (boardData.isEmpty() && boardData.getCurrentPlayer() != Constants.PLAYER_TO_START)
 				boardData.switchPlayer();
-			
+
 			currentPlayerAccordingToBoard = boardData.getCurrentPlayer();
 
-			if(currentPlayerAccordingToBoard == Constants.FIRST_PLAYER)
+			if (currentPlayerAccordingToBoard == Constants.FIRST_PLAYER)
 				msg1Move.playerOneMoveMessage();
-			else if(currentPlayerAccordingToBoard == Constants.SECOND_PLAYER)
+			else if (currentPlayerAccordingToBoard == Constants.SECOND_PLAYER)
 				msg2Move.playerTwoMoveMesage();
+			do { // notYourTurn - while
+				playerTryingToMove = playerCheckForm.check(player_input_scanner);
 
-			do {
-				playerTryingToMove = playerCheckForm.check(sc);
-
-				if(playerTryingToMove != currentPlayerAccordingToBoard) {
+				if (playerTryingToMove != currentPlayerAccordingToBoard) {
 					new NotYourTurnMessage();
 					notYourTurn = true;
-				}
-				else
+				} else
 					notYourTurn = false;
-			}while (notYourTurn == true);
+			} while (notYourTurn);
+			do { // while not a legal move
+				row = chooseX.choose(currentPlayerAccordingToBoard, player_input_scanner);
+				col = chooseY.choose(currentPlayerAccordingToBoard, player_input_scanner);
 
-			do{
-				row = chooseX.choose(currentPlayerAccordingToBoard, sc);
-				col = chooseY.choose(currentPlayerAccordingToBoard, sc);
-
-
-				if(boardData.isRubricAvailable(row, col)) {
-					move(row,col);
+				if (boardData.isRubricAvailable(row, col)) {
+					move(row, col);
 					legalMove = true;
-				}
-				else {
+				} else {
 					illegalMessage.rubrikIsOccupied();
 					legalMove = false;
 				}
-				
-				
-			}while(legalMove == false);
+			} while (legalMove == false);
+
+			newGame = false;
 			boardDisplay.presentBoard(boardData, boardData.getN());
 
+		} while (!boardData.checkDraw() && !boardData.checkWin(row, col));
 
-			restartGame = restartForm.restartCheck(sc);
-			if(restartGame == Constants.AGREE_TO_RESTART_CODE)
-				restartGame();
-		}
-		while (!boardData.checkDraw() && !boardData.checkWin(row,col));
-		results();
+		showResults();
+
 	}
 
 	public void move(int x, int y) {
-		boardData.registerMove(x, y, State.values()[boardData.getCurrentPlayer()]);
+		if (boardData.getCurrentPlayer() == Constants.FIRST_PLAYER)
+			boardData.registerMove(x, y, State.X);
+
+		else if (boardData.getCurrentPlayer() == Constants.SECOND_PLAYER)
+			boardData.registerMove(x, y, State.O);
+
 	}
 
-	
-	public void results() {
-		if(boardData.checkDraw()) {
+	public void showResults() {
+		if (boardData.checkDraw()) {
 			new ResultsMessage(0);
-		}
-		else {
+		} else {
 			int winner = boardData.getCurrentPlayer();
 			new ResultsMessage(winner);
 		}
 	}
 
 	public void switchPlayer() {
-		if(currentPlayer == Constants.FIRST_PLAYER)
+		if (currentPlayer == Constants.FIRST_PLAYER)
 			currentPlayer = Constants.SECOND_PLAYER;
 		else if (currentPlayer == Constants.SECOND_PLAYER)
 			currentPlayer = Constants.FIRST_PLAYER;
 	}
-	
+
 	public void quitGame() {
 		sc.close();
 		new QuitMessage();
 		System.exit(0);
 	}
+
 	public void restartGame() {
 		boardData.cleanBoard();
 	}

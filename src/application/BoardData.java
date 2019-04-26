@@ -86,7 +86,8 @@ public class BoardData {
 		return true;
 	}
 	public boolean checkWin(int x, int y) {
-		if(isEmpty() == true)
+		//Board is empty
+		if(isEmpty())
 			return false;
 		
 		State cellToCheck = cellsState[x][y];

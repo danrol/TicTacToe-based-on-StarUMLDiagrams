@@ -13,7 +13,7 @@ public class PlayerTwoMoveMessage {
 
 	
   public void playerTwoMoveMesage() {
-	  System.out.printf("Player #2 should perform move");
+	  System.out.printf("Player #2's turn");
 
   }
 }

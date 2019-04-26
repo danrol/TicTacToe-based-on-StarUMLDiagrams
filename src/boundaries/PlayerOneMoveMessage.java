@@ -11,7 +11,7 @@ public class PlayerOneMoveMessage {
 
 	
   public void playerOneMoveMessage() {
-	  System.out.printf("Player #1 should perform move");
+	  System.out.printf("Player #1's turn");
 
   }
 

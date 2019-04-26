@@ -16,7 +16,7 @@ public class RestartGameForm {
 public int restartCheck(Scanner sc) {
 	int restartGame;
 	System.out.printf("Do you want to restart the game (%d = no, %d = yes)?",
-			Constants.DONT_RESTART_CODE, Constants.AGREE_TO_RESTART_CODE);
+			Constants.DONT_RESTART_CODE, Constants.AGREE_TO_RESTART_GAME);
 	restartGame = sc.nextInt();
 	return restartGame;
 }
