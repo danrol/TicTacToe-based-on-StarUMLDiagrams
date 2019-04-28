@@ -5,6 +5,7 @@
  *
  * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
  */
+
 package application;
 
 import application.Constants.*;
@@ -12,7 +13,6 @@ import application.Constants.*;
 
 public class BoardData {
 
-//	public enum State{Blank, X, O};
 	private int n = 3;
 	private State[][] cellsState;
 	private int moveCount = 0;
@@ -31,19 +31,14 @@ public class BoardData {
 		this.currentPlayer = currentPlayer;
 	}
 
-	// ----------- << attribute.annotations@AAAAAAFqB6bHtEni1gI= >>
-	// ----------- >>
+
 	private int playerTurn;
 
-	// ----------- << attribute.annotations@AAAAAAFqEWBgTiHmyJM= >>
-	// ----------- >>
+
 	public BoardData() {
 		this.cellsState = new State[n][n];
 		this.cleanBoard();
 	}
-
-	// ----------- << attribute.annotations@AAAAAAFqEWBgTiHlAa4= >>
-	// ----------- >>
 
 	public State[][] getCellsState() {
 		return cellsState;
@@ -86,7 +81,6 @@ public class BoardData {
 		return true;
 	}
 	public boolean checkWin(int x, int y) {
-		//Board is empty
 		if(isEmpty())
 			return false;
 		
@@ -144,7 +138,6 @@ public class BoardData {
 			moveCount++;
 		}
 		else
-			//TODO
 			System.out.println("Rubrik already occupied please change your move");
 	}
 
